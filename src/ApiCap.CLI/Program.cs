@@ -16,6 +16,7 @@ namespace ApiCap
             var application = new CommandLineApplication();
             CommandArgument argument = application.Argument("assemblypattern", "The pattern to include all assemblies");
             application.HelpOption("-? | -h | --help");
+            var outputOption = application.Option("-out | --output", "The path of the output file, default output.txt in the current folder.", CommandOptionType.SingleValue);
             application.OnExecute(() =>
                 {
                     Console.WriteLine("APICapv 0.0.1.0");
@@ -23,7 +24,9 @@ namespace ApiCap
 
                     var files = Directory.GetFiles(Path.GetDirectoryName(argument.Value), Path.GetFileName(argument.Value), SearchOption.TopDirectoryOnly);
                     var assemblies = files.Select(path => Assembly.LoadFrom(path)).ToArray();
-                    var visitor = new FileAssemblyVisitor(@"C:\wimdc\output.txt");
+                    var outputPath = string.IsNullOrEmpty(outputOption.Value()) ? "output.txt" : outputOption.Value();
+
+                    var visitor = new FileAssemblyVisitor(outputPath);
 
                     visitor.Visit(assemblies);
 
