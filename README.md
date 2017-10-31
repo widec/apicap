@@ -3,7 +3,9 @@ API capture tool
 
 Use this tool to capture your public API. Select the assemblies that you want to include in your public API and this tool creates and output file containing your public API. This file can be included in your repository and serve as a API history file. 
 
+[![Build status](https://ci.appveyor.com/api/projects/status/1spr23s9jh23lxob?svg=true)](https://ci.appveyor.com/project/widec/apicap)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/751e6d57cab447aeaa32796ecacba8c1)](https://www.codacy.com/app/widec/apicap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=widec/apicap&amp;utm_campaign=Badge_Grade)
+
 
 usage : ApiCap.CLI.exe filepattern -out filename
 
