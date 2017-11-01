@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project Toolsversion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ApiCapPath Condition="'$(ApiCapPath)' == ''">$(MSBuildProjectDirectory)\bin\debug\</ApiCapPath>
+  </PropertyGroup>
+
+  <UsingTask AssemblyFile="$(ApiCapPath)ApiCap.MsBuild.dll" TaskName="ApiCap.MsBuild.ApiCapture"/>
+</Project>

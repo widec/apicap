@@ -1,0 +1,22 @@
+namespace ApiCap.MsBuild
+{
+	class ApiCapture
+	{
+		ITaskItem[] Assemblies { get; set; }
+		IBuildEngine BuildEngine { get; set; }
+		IBuildEngine2 BuildEngine2 { get; }
+		IBuildEngine3 BuildEngine3 { get; }
+		IBuildEngine4 BuildEngine4 { get; }
+		IBuildEngine5 BuildEngine5 { get; }
+		ITaskHost HostObject { get; set; }
+		TaskLoggingHelper Log { get; }
+		ITaskItem OutputFileName { get; set; }
+		bool Equals(object obj);
+		bool Execute();
+		int GetHashCode();
+		Type GetType();
+		string ToString();
+	}
+	
+}
+

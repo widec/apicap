@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiCap
+namespace ApiCap.CLI
 {
     class Program
     {
