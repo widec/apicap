@@ -30,7 +30,7 @@ namespace ApiCap
             { typeof(void), "void" }
         };
 
-        string _filename;
+        readonly string _filename;
         StreamWriter _writer;
 
         public FileAssemblyVisitor(string filename)
@@ -64,7 +64,6 @@ namespace ApiCap
             _writer.WriteLine("");
         }
 
-
         public override void VisitClass(Type type)
         {
             _writer.WriteLine($"\tclass {GetTypeName(type)}");
@@ -82,18 +81,15 @@ namespace ApiCap
 
         public override void VisitProperty(PropertyInfo propertyInfo)
         {
-            var get = propertyInfo.CanRead ? "get;" : "";
-            var set = propertyInfo.CanWrite ? "set;" : "";
-
             _writer.WriteLine($"\t\t{GetTypeName(propertyInfo.PropertyType)} {propertyInfo.Name} {{{GetGetSet(propertyInfo)}}}");
         }
 
-        private string GetParameters(MethodInfo methodInfo)
+        private static string GetParameters(MethodInfo methodInfo)
         {
             return string.Join(", ", methodInfo.GetParameters().Select(p => $"{GetTypeName(p.ParameterType)} {p.Name}"));
         }
 
-        private string GetGetSet(PropertyInfo propertyInfo)
+        private static string GetGetSet(PropertyInfo propertyInfo)
         {
             if (propertyInfo.CanRead)
             {
